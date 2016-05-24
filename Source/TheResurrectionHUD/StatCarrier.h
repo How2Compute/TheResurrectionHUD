@@ -48,5 +48,10 @@ public:
 	UFUNCTION(BlueprintCallable, category = "Food")
 		float GetMaxAmmountOfFood();
 
+	UFUNCTION(BlueprintCallable, category = "Food")
+		bool AddFood(int Ammount);
+	UFUNCTION(BlueprintCallable, category = "Food")
+		bool RemoveFood(int Ammount);
+
 	
 };

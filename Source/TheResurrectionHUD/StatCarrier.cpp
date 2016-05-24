@@ -79,3 +79,32 @@ float UStatCarrier::GetMaxAmmountOfFood()
 	return MaxFood;
 }
 
+bool UStatCarrier::AddFood(int Ammount)
+{
+	int OldFood = Food;
+	Food += Ammount;
+	if (Food != OldFood + Ammount) {
+		//Something went horribly wrong!
+		return false;
+	}
+	else {
+		//Things must have gone fine!
+		return true;
+	}
+}
+
+bool UStatCarrier::RemoveFood(int Ammount)
+{
+	int OldFood = Food;
+	Food -= Ammount;
+	if (Food != OldFood - Ammount) {
+		//Something went horribly wrong!
+		return false;
+	}
+	else {
+		//Things must have gone fine!
+		return true;
+	}
+}
+
+
