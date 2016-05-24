@@ -1,0 +1,12 @@
+Binaries
+DerivedDataCache
+Intermediate
+Saved
+*.opensdf
+*.sdf
+*.sln
+*.suo
+*.xcodeproj
+*.xcworkspace
+TheResurrectionHUD.VC.db
+TheResurrectionHUD.VC.VC.opendb
