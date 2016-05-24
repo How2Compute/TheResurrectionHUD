@@ -95,15 +95,22 @@ bool UStatCarrier::AddFood(int Ammount)
 
 bool UStatCarrier::RemoveFood(int Ammount)
 {
-	int OldFood = Food;
-	Food -= Ammount;
-	if (Food != OldFood - Ammount) {
-		//Something went horribly wrong!
+	//Do very basic errorchecking before attempting more
+	if (Food <= 0) {
+		//We are already at 0 food so we cant subtract even more!
 		return false;
 	}
 	else {
-		//Things must have gone fine!
-		return true;
+		int OldFood = Food;
+		Food -= Ammount;
+		if (Food != OldFood - Ammount) {
+			//Something went horribly wrong!
+			return false;
+		}
+		else {
+			//Things must have gone fine!
+			return true;
+		}
 	}
 }
 
