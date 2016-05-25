@@ -53,5 +53,9 @@ public:
 	UFUNCTION(BlueprintCallable, category = "Food")
 		bool RemoveFood(int Ammount);
 
+	UFUNCTION(BlueprintCallable, category = "Health")
+		bool DoHeal(int Ammount);
+	UFUNCTION(BlueprintCallable, category = "Health")
+		bool DoDamage(int Ammount);
 	
 };

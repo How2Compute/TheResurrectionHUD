@@ -81,6 +81,9 @@ float UStatCarrier::GetMaxAmmountOfFood()
 
 bool UStatCarrier::AddFood(int Ammount)
 {
+	if (Food >= MaxFood) {
+		return false;
+	}
 	int OldFood = Food;
 	Food += Ammount;
 	if (Food != OldFood + Ammount) {
@@ -88,6 +91,9 @@ bool UStatCarrier::AddFood(int Ammount)
 		return false;
 	}
 	else {
+		if (Food >= MaxFood) {
+			Food = MaxFood;
+		}
 		//Things must have gone fine!
 		return true;
 	}
@@ -104,6 +110,48 @@ bool UStatCarrier::RemoveFood(int Ammount)
 		int OldFood = Food;
 		Food -= Ammount;
 		if (Food != OldFood - Ammount) {
+			//Something went horribly wrong!
+			return false;
+		}
+		else {
+			//Things must have gone fine!
+			return true;
+		}
+	}
+}
+
+bool UStatCarrier::DoHeal(int Ammount)
+{
+	//Do very basic errorchecking before attempting more
+	if (Health <= 0) {
+		//We are already at 0 health so we cant subtract even more!
+		return false;
+	}
+	else {
+		int OldHealth = Health;
+		Health += Ammount;
+		if (Food != OldHealth + Ammount) {
+			//Something went horribly wrong!
+			return false;
+		}
+		else {
+			//Things must have gone fine!
+			return true;
+		}
+	}
+}
+
+bool UStatCarrier::DoDamage(int Ammount)
+{
+	//Do very basic errorchecking before attempting more
+	if (Health <= 0) {
+		//We are already at 0 health so we cant subtract even more!
+		return false;
+	}
+	else {
+		int OldHealth = Health;
+		Health -= Ammount;
+		if (Health != OldHealth - Ammount) {
 			//Something went horribly wrong!
 			return false;
 		}
