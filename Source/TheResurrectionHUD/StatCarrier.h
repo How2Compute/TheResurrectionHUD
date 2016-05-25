@@ -57,5 +57,8 @@ public:
 		bool DoHeal(int Ammount);
 	UFUNCTION(BlueprintCallable, category = "Health")
 		bool DoDamage(int Ammount);
-	
+	UFUNCTION(BlueprintCallable, category = "Energy")
+		bool AddEnergy(int Ammount);
+	UFUNCTION(BlueprintCallable, category = "Energy")
+		bool RemoveEnergy(int Ammount);
 };

@@ -162,4 +162,46 @@ bool UStatCarrier::DoDamage(int Ammount)
 	}
 }
 
+bool UStatCarrier::AddEnergy(int Ammount)
+{
+	//Do very basic errorchecking before attempting more
+	if (Energy <= 0) {
+		//We are already at 0 energy so we cant subtract even more!
+		return false;
+	}
+	else {
+		int OldEnergy = Energy;
+		Energy += Ammount;
+		if (Energy != OldEnergy + Ammount) {
+			//Something went horribly wrong!
+			return false;
+		}
+		else {
+			//Things must have gone fine!
+			return true;
+		}
+	}
+}
+
+bool UStatCarrier::RemoveEnergy(int Ammount)
+{
+	//Do very basic errorchecking before attempting more
+	if (Energy <= 0) {
+		//We are already at 0 energy so we cant subtract even more!
+		return false;
+	}
+	else {
+		int OldEnergy = Energy;
+		Energy -= Ammount;
+		if (Energy != OldEnergy - Ammount) {
+			//Something went horribly wrong!
+			return false;
+		}
+		else {
+			//Things must have gone fine!
+			return true;
+		}
+	}
+}
+
 
