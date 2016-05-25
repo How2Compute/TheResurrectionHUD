@@ -123,8 +123,7 @@ bool UStatCarrier::RemoveFood(int Ammount)
 bool UStatCarrier::DoHeal(int Ammount)
 {
 	//Do very basic errorchecking before attempting more
-	if (Health <= 0) {
-		//We are already at 0 health so we cant subtract even more!
+	if (Health >= MaxHealth) {
 		return false;
 	}
 	else {
@@ -149,6 +148,10 @@ bool UStatCarrier::DoDamage(int Ammount)
 		return false;
 	}
 	else {
+		if (Health - Ammount < 0) {
+			Health = 0;
+			return false;
+		}
 		int OldHealth = Health;
 		Health -= Ammount;
 		if (Health != OldHealth - Ammount) {
@@ -165,8 +168,7 @@ bool UStatCarrier::DoDamage(int Ammount)
 bool UStatCarrier::AddEnergy(int Ammount)
 {
 	//Do very basic errorchecking before attempting more
-	if (Energy <= 0) {
-		//We are already at 0 energy so we cant subtract even more!
+	if (Energy >= MaxEnergy) {
 		return false;
 	}
 	else {
@@ -192,6 +194,10 @@ bool UStatCarrier::RemoveEnergy(int Ammount)
 	}
 	else {
 		int OldEnergy = Energy;
+		if (Energy - Ammount < 0) {
+			Energy = 0;
+			return false;
+		}
 		Energy -= Ammount;
 		if (Energy != OldEnergy - Ammount) {
 			//Something went horribly wrong!
